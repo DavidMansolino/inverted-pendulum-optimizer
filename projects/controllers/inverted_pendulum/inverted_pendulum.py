@@ -47,6 +47,8 @@ while robot.step(timestep) != -1:
         print("P_GAIN: %lf" % KP)
         print("I_GAIN: %lf" % KI)
         print("D_GAIN: %lf" % KD)
+        with open('result.txt', 'w') as f:
+            f.write('%lf %lf %lf %lf' % (robot.getTime(), KP, KI, KD))
         robot.simulationQuit(0)
 
     # PID control.
