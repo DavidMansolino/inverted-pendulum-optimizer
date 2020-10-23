@@ -1,0 +1,27 @@
+name: Optimizer
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.step1.outputs.version }}
+    container:
+      image: cyberbotics/webots:latest
+    steps:
+    - name: Print Webots Version
+      run: xvfb-run webots --version --batch
+    - name: Print System Information
+      run: xvfb-run webots --sysinfo --batch
+    - name: Compile Plugin
+      run: |
+        cd projects/plugins/physics/inverted_pendulum_perturbation
+        make
+    - name: Run Simulation
+      run: |
+        cd $GITHUB_WORKSPACE
+        xvfb-run webots --batch --mode=fast --stdout --stderr projects/worlds/inverted_pendulum.wbt
