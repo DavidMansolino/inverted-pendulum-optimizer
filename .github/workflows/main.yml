@@ -34,5 +34,5 @@ jobs:
         xvfb-run webots --batch --mode=fast --stdout --stderr projects/worlds/inverted_pendulum.wbt
     - uses: actions/upload-artifact@v2
       with:
-        name: build-${{ P_GAIN }}-${{ D_GAIN }}
+        name: build-${{ matrix.P_GAIN }}-${{ matrix.D_GAIN }}
         path: projects/controllers/inverted_pendulum/*.txt
