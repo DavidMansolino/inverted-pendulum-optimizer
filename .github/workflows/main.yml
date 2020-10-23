@@ -45,10 +45,4 @@ jobs:
       with:
         path: result
     - name: Analyze Data
-      run: |
-        ls
-        ls *
-        ls */*
-        ls result/*
-        unzip 'result/*.zip'
-        ls result/*
+      run: ls result/*
