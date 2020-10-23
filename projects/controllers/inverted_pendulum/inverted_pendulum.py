@@ -1,6 +1,7 @@
 """Sample Webots controller for the inverted pendulum benchmark."""
 
 from controller import Supervisor
+import os
 import math
 
 # Get pointer to the robot.
@@ -23,9 +24,9 @@ rightMotor.setVelocity(0.0)
 maxSpeed = min(rightMotor.getMaxVelocity(), leftMotor.getMaxVelocity())
 
 # Define the PID control constants and variables.
-KP = 31.4
+KP = float(os.environ.get('P_GAIN', '31.4'))
 KI = 100.5
-KD = 0
+KD = float(os.environ.get('D_GAIN', '0'))
 integral = 0.0
 previous_position = 0.0
 
@@ -43,6 +44,9 @@ while robot.step(timestep) != -1:
         leftMotor.setVelocity(0.0)
         rightMotor.setVelocity(0.0)
         print("Score: %lf" % robot.getTime())
+        print("P_GAIN: %lf" % KP)
+        print("I_GAIN: %lf" % KI)
+        print("D_GAIN: %lf" % KD)
         robot.simulationQuit(0)
 
     # PID control.
