@@ -25,7 +25,7 @@ maxSpeed = min(rightMotor.getMaxVelocity(), leftMotor.getMaxVelocity())
 
 # Define the PID control constants and variables.
 KP = float(os.environ.get('P_GAIN', '31.4'))
-KI = float(os.environ.get('D_GAIN', '100.5'))
+KI = float(os.environ.get('I_GAIN', '100.5'))
 KD = float(os.environ.get('D_GAIN', '0'))
 integral = 0.0
 previous_position = 0.0
