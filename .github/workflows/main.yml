@@ -12,10 +12,9 @@ jobs:
       image: cyberbotics/webots:latest
     strategy:
       matrix:
-      #  P_GAIN: [10, 15, 20, 25, 30, 35, 40, 45, 50]
-      #  D_GAIN: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
-        P_GAIN: [10, 15]
-        D_GAIN: [0]
+        P_GAIN: [10, 15, 20, 25, 30, 32, 35, 37, 40, 45, 50]
+        I_GAIN: [90, 110]
+        D_GAIN: [0, 0.1, 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 3.5]
     steps:
     - uses: actions/checkout@v2
     - name: Print Webots Version
@@ -30,11 +29,12 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         export P_GAIN=${{ matrix.P_GAIN }}
+        export I_GAIN=${{ matrix.I_GAIN }}
         export D_GAIN=${{ matrix.D_GAIN }}
         xvfb-run webots --batch --mode=fast --stdout --stderr projects/worlds/inverted_pendulum.wbt
     - uses: actions/upload-artifact@v2
       with:
-        name: build-${{ matrix.P_GAIN }}-${{ matrix.D_GAIN }}
+        name: build-${{ matrix.P_GAIN }}-${{ matrix.I_GAIN }}-${{ matrix.D_GAIN }}
         path: projects/controllers/inverted_pendulum/*.txt
   analyze:
     needs: optimization
@@ -45,7 +45,5 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         path: result
-    - name: Debug
-      run: ls result/*
     - name: Analyze Data
       run: python analyzer.py
