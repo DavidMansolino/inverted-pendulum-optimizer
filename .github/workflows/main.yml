@@ -8,8 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.step1.outputs.version }}
     container:
       image: cyberbotics/webots:latest
     steps:
