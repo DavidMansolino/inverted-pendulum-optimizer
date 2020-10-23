@@ -8,7 +8,7 @@ results = []
 # Extract all the scores and associated parameters
 for rootPath, dirNames, fileNames in os.walk('.'):  # TODO: get this as input
     for fileName in fnmatch.filter(fileNames, '*.txt'):
-        with open(fileName) as f:
+        with open(os.path.join(rootPath, fileName)) as f:
             values = f.readline().split()
             score = float(values[0])
             parameters = {
