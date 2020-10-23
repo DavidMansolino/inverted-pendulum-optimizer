@@ -37,6 +37,7 @@ jobs:
         name: build-${{ matrix.P_GAIN }}-${{ matrix.D_GAIN }}
         path: projects/controllers/inverted_pendulum/*.txt
   analyze:
+    needs: optimization
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
