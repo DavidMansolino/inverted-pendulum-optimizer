@@ -12,8 +12,7 @@ jobs:
       image: cyberbotics/webots:latest
     strategy:
       matrix:
-        # P_GAIN: [25, 30, 32, 35, 37, 40, 45]
-        P_GAIN: [28, 30, 32]
+        P_GAIN: [25, 30, 32, 35, 37, 40, 45]
         I_GAIN: [90, 110]
         # D_GAIN: [0, 0.1, 0.25, 0.5, 0.75, 1, 1.5, 2, 3]
         D_GAIN: [0, 0.1, 0.25, 0.5, 0.75, 1]
