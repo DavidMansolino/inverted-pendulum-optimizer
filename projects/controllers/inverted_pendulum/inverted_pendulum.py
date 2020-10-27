@@ -38,7 +38,6 @@ rightMotor.setVelocity(0.0)
 while robot.step(timestep) != -1:
     # Read the sensor measurement.
     position = ps.getValue()
-    print(robot.getTime(), position)
 
     # Stop the robot when the pendulum falls.
     if math.fabs(position) > math.pi * 0.5 or robot.getTime() > 180.0:
