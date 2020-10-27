@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         P_GAIN: [40, 42, 45, 47, 50, 60]
-        I_GAIN: [80, 90, 100, 110]
-        D_GAIN: [0, 0.5, 0.75, 1, 1.5, 2.0, 3.5, 3.0, 4.0]
+        I_GAIN: [90, 95, 100]
+        D_GAIN: [0, 0.5, 1, 2.0, 3.0, 4.0, 5.0, 6.0, 10.0]
     steps:
     - uses: actions/checkout@v2
     - name: Print Webots Version
