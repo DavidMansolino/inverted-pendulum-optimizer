@@ -69,6 +69,7 @@ void webots_physics_step() {
 
   if (force_steps > 0) {
     // apply force to the pendulum
+    dWebotsConsolePrintf("Plugin: Added force: %lf %lf %lf\n", forceVector[0], forceVector[1], forceVector[2]);
     dBodyAddRelForce(pendulum_body, forceVector[0], forceVector[1], forceVector[2]);
     --force_steps;
   }
