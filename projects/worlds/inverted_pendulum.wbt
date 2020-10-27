@@ -208,3 +208,5 @@ Sofa {
   translation 0.46911152 -4.5519144e-14 1.5328805
   rotation 0 1 0 1.5707963
 }
+InvertedPendulumBenchmark {
+}
