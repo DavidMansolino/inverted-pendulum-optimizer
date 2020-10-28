@@ -17,10 +17,6 @@ jobs:
         D_GAIN: [0, 0.5, 1, 2.0, 3.0, 4.0, 5.0, 6.0, 10.0]
     steps:
     - uses: actions/checkout@v2
-    - name: Print Webots Version
-      run: xvfb-run webots --version --batch
-    - name: Print System Information
-      run: xvfb-run webots --sysinfo --batch
     - name: Compile Plugin
       run: |
         cd projects/plugins/physics/inverted_pendulum_perturbation
