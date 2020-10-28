@@ -9,7 +9,7 @@ jobs:
   optimization:
     runs-on: ubuntu-latest
     container:
-      image: cyberbotics/webots:R2020b-rev1-ubuntu20.04
+      image: cyberbotics/webots:latest
     strategy:
       matrix:
         P_GAIN: [40, 42, 45, 47, 50, 60]
