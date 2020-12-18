@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - '*'
-  schedule:
-    - cron:  '0 */3 * * *'
+#  schedule:
+#    - cron:  '0 */3 * * *'
 
 jobs:
   optimization:
